@@ -3,11 +3,13 @@ package com.example.desingpattern;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.desingpattern.Creational.AbstractFactory.constants.MaterialType;
 import com.example.desingpattern.Creational.AbstractFactory.furnitures.FurnitureFactory;
 import com.example.desingpattern.Creational.AbstractFactory.products.PlasticChar;
 import com.example.desingpattern.Creational.AbstractFactory.products.WoodChar;
+import com.example.desingpattern.Creational.Builder.BankAccount;
 import com.example.desingpattern.Creational.MethodFactory.BankFactory;
 import com.example.desingpattern.Creational.MethodFactory.banks.TPBank;
 import com.example.desingpattern.Creational.MethodFactory.banks.VietComBank;
@@ -35,9 +37,16 @@ public class MainActivity extends AppCompatActivity {
         tpBank.getInfoBank();
         vietComBank.getInfoBank();
 
+        // Pattern builder
+        BankAccount bankAccount = new BankAccount
+                .BankAccountBuilder("VietCombank", "A1234").builder();
+        Log.d("BankAccount", bankAccount.toString());
+
         // Adapter pattern
         VietNamTarget target = new TranslatorAdapter(new JapanAdaptee());
         target.send("Hello japan");
+
+
 
     }
 }
